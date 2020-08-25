@@ -5,4 +5,4 @@ Use this link to view the project : https://mzmzk.csb.app/
 Sample Image
 ------------
 
-<img width="699" alt="Screenshot 2020-08-25 at 10 25 17 AM" src="https://user-images.githubusercontent.com/67738368/91124709-6e2ef500-e6bd-11ea-8229-10ec22ea715d.png">
+<img width="696" alt="Screenshot 2020-08-25 at 6 34 47 PM" src="https://user-images.githubusercontent.com/67738368/91181339-6cd5ea80-e706-11ea-8db6-a7389590f2bf.png">
