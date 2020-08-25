@@ -1,6 +1,6 @@
 Creating a Maze Game using React
 
-Use this link to view the project : https://mzmzk.csb.app/
+Use this link to view the project : https://ci2bv.csb.app/
 
 Sample Image
 ------------
