@@ -22,7 +22,9 @@ class Board extends React.Component {
     this.totalSquares = this.props.width * this.props.height;
     this.state = {
       squares: [],
-      marioLocation: Math.floor(Math.random() * (this.totalSquares - 0) + 0),
+      marioLocation: Math.floor(
+        this.totalSquares / 2 - (this.props.width + this.props.height) / 4 - 1
+      ),
       gameInitialized: false,
       moves: 0,
       yMoves: 0,
@@ -46,7 +48,6 @@ class Board extends React.Component {
       direction === "+" &&
       this.state.marioLocation + 1 - this.props.height > 0
     ) {
-      console.log("Moving in +y directions");
       let newSquares = this.state.squares.slice();
       newSquares[this.state.marioLocation] = {
         element: "",
@@ -70,7 +71,6 @@ class Board extends React.Component {
       direction === "-" &&
       this.state.marioLocation + this.props.height < this.totalSquares
     ) {
-      console.log("Moving in -y direction");
       let newSquares = this.state.squares.slice();
       newSquares[this.state.marioLocation] = {
         element: "",
@@ -104,7 +104,6 @@ class Board extends React.Component {
       (this.state.marioLocation + 2) % this.props.width !== 1 &&
       this.state.marioLocation + 1 < this.totalSquares
     ) {
-      console.log("Moving in +x directions");
       let newSquares = this.state.squares.slice();
       newSquares[this.state.marioLocation] = {
         element: "",
@@ -128,7 +127,6 @@ class Board extends React.Component {
       this.state.marioLocation % this.props.width !== 0 &&
       this.state.marioLocation - 1 >= 0
     ) {
-      console.log("Moving in -x direction");
       let newSquares = this.state.squares.slice();
       newSquares[this.state.marioLocation] = {
         element: "",
@@ -170,7 +168,6 @@ class Board extends React.Component {
         ];
       }
     }
-    console.log("Mario Range: ", marioRange);
     return marioRange;
   }
 
@@ -217,13 +214,11 @@ class Board extends React.Component {
   }
 
   checkForEnemies() {
-    console.log("checking for enemies: ", this.state);
     let enemies = this.state.squares.filter((square) => {
       return square.element === "enemy.png";
     });
-    console.log("Total enemies: ", enemies);
     if (enemies.length === 0) {
-      alert("Game over. Total moves to save princess: " + this.state.moves);
+      alert("Game over. Total moves to kill the enemies: " + this.state.moves);
     } else {
       this.decideMove(enemies.map((enemy) => enemy.value));
     }
@@ -265,7 +260,6 @@ class Board extends React.Component {
       for (let i = 0; i < Math.floor(Math.sqrt(this.totalSquares)) + 1; i++) {
         luckySquares.push(Math.floor(Math.random() * this.totalSquares));
       }
-      console.log("calculating luck squares: ", luckySquares);
       let squareNumber = 0;
       for (let i = 0; i < this.props.height; i++) {
         for (let j = 0; j < this.props.width; j++) {
@@ -296,14 +290,20 @@ class Game extends React.Component {
     if (Number.isNaN(output)) {
       return {
         valid: false,
-        msg: `${input} not valid. 
+        msg: `${input} is not a valid number. 
         Please enter a valid integer for ${dimension}`
       };
     } else if (output < 0) {
       return {
         valid: false,
-        msg: `${input} not valid. 
+        msg: `${input} is not a valid number. 
           Please enter a positive integer for ${dimension}`
+      };
+    } else if (output % 2 !== 0) {
+      return {
+        valid: false,
+        msg: `${input} is not a valid number. 
+          Please enter a even integer for ${dimension}`
       };
     } else {
       return {
@@ -332,7 +332,7 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <h1 class="title">Maze Game</h1>
+          <h1 className="title">Maze Game</h1>
           <Board width={width.output} height={height.output} />
           <h3 style={{ textAlign: "center" }}>
             Click on Mario to start the game!!
