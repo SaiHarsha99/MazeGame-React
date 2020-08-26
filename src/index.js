@@ -332,11 +332,13 @@ class Game extends React.Component {
     return (
       <div className="game">
         <div className="game-board">
-          <h1 className="title">Maze Game</h1>
+          <h1 className="title">MaZe GaMe</h1>
           <Board width={width.output} height={height.output} />
-          <h3 style={{ textAlign: "center" }}>
-            Click on Mario to start the game!!
-          </h3>
+          <marquee>
+            <h2 style={{ textAlign: "center" }}>
+              Click on Mario to start the game!!
+            </h2>
+          </marquee>
         </div>
       </div>
     );

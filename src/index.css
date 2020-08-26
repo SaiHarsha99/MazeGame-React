@@ -1,6 +1,10 @@
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
+  height: 100%;
+  background-image: url("background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 ol,
@@ -15,20 +19,24 @@ ul {
 }
 
 .square {
-  background: #fff;
+  background: lightcyan;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
+  font-size: 60px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 70px;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 70px;
 }
 
+img {
+  width: 50px;
+  height: 50px;
+}
 .square:focus {
   outline: none;
 }
@@ -41,11 +49,14 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  margin-left: -100px;
 }
 
 .title {
   text-align: center;
-  color: rgb(82, 255, 47);
+  color: orangered;
+  font-size: 50px;
 }
 
 .game-info {
